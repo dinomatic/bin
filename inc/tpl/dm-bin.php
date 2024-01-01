@@ -26,6 +26,9 @@ use PrivateBin\I18n;
 		<script type="text/javascript" data-cfasync="false" src="js/base-x-4.0.0.js" integrity="sha512-nNPg5IGCwwrveZ8cA/yMGr5HiRS5Ps2H+s0J/mKTPjCPWUgFGGw7M5nqdnPD3VsRwCVysUh3Y8OWjeSKGkEQJQ==" crossorigin="anonymous"></script>
 		<script type="text/javascript" data-cfasync="false" src="js/rawinflate-0.3.js" integrity="sha512-g8uelGgJW9A/Z1tB6Izxab++oj5kdD7B4qC7DHwZkB6DGMXKyzx7v5mvap2HXueI2IIn08YlRYM56jwWdm2ucQ==" crossorigin="anonymous"></script>
 		<script type="text/javascript" data-cfasync="false" src="js/bootstrap-3.4.1.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous"></script>
+	<?php if ($FILEUPLOAD) : ?>
+			<script type="text/javascript" data-cfasync="false" src="js/dm-bin.js" integrity="sha512-tWP6ndUDLL/dewDLQCN3Lg59fOKJe7hZ3WHzILxkRgLojqJoqRQhExth/KzuyVR8zoXIGpHRCr9cA5aZGkcUYw==" crossorigin="anonymous"></script>
+	<?php endif; ?>
 	<?php if ($SYNTAXHIGHLIGHTING) : ?>
 		<script type="text/javascript" data-cfasync="false" src="js/prettify.js?<?php echo rawurlencode($VERSION); ?>" integrity="sha512-puO0Ogy++IoA2Pb9IjSxV1n4+kQkKXYAEUtVzfZpQepyDPyXk8hokiYDS7ybMogYlyyEIwMLpZqVhCkARQWLMg==" crossorigin="anonymous"></script>
 	<?php endif; ?>
@@ -169,6 +172,10 @@ use PrivateBin\I18n;
 					</div>
 				<?php endif; ?>
 
+				<div id="largefilenotice" role="alert" class="hidden alert alert-danger">
+					File size must be less than 1MB.
+				</div>
+
 				<div id="remainingtime" role="alert" class="hidden alert alert-info"></div>
 
 				<?php if ($FILEUPLOAD) : ?>
@@ -194,8 +201,8 @@ use PrivateBin\I18n;
 				<div id="oldnotice" role="alert" class="hidden alert alert-danger">
 					<?php echo I18n::_('%s requires a modern browser to work.', I18n::_($NAME)), PHP_EOL; ?>
 					<a href="https://www.mozilla.org/firefox/">Firefox</a>,
-					<a href="https://www.opera.com/">Opera</a>,
-					<a href="https://www.google.com/chrome">Chrome</a>
+					<a href="https://brave.com/">Brave</a>,
+					<a href="https://www.opera.com/">Opera</a>
 				</div>
 
 				<?php if ($HTTPWARNING) : ?>
