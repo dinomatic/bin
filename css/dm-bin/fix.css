@@ -1,0 +1,184 @@
+/** a class that will make any element (mostly "a") look like a water.css button **/
+.w-btn {
+  appearance: none;
+  padding: 10px 30px;
+  color: var(--button-text) !important;
+  background-color: var(--background);
+  border: none;
+  border-radius: 6px;
+  outline: none;
+
+  &:hover {
+    color: var(--button-text) !important;
+    background-color: var(--button-hover) !important;
+  }
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2em;
+
+  .reloadlink {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    color: var(--text);
+
+    & svg {
+      stroke: var(--focus);
+      margin-right: 4px;
+    }
+  }
+
+  & button {
+    margin-bottom: 0;
+  }
+}
+
+.modal-content {
+  background-color: var(--background);
+
+  input[type="password"] {
+    border: 1px solid var(--border);
+  }
+}
+
+.options-list {
+  margin-bottom: 3em;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  & > li {
+    position: relative;
+    margin-right: 1em;
+
+    .w-btn {
+      display: block;
+      margin-bottom: 1em;
+
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    min-width: 100%;
+    background-color: var(--background);
+    border-radius: 6px;
+
+    & a {
+      color: var(--text);
+    }
+  }
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 2em;
+
+  & a {
+
+    &.edit {
+      border-radius: 6px 0 0 6px;
+    }
+    &.preview {
+      border-radius: 0 6px 6px 0;
+    }
+
+    &[aria-selected="true"] {
+      background-color: var(--button-base);
+    }
+  }
+}
+
+textarea {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 1em;
+
+  & button {
+    margin-right: 0;
+  }
+}
+
+#prettymessage,
+#placeholder {
+  padding: 2em;
+  background-color: var(--background);
+  border-radius: 6px;
+}
+
+#deletelink {
+  margin-bottom: 12px;
+}
+
+#pasteurl {
+  display: block;
+  margin: 6px 0;
+  color: var(--text);
+  background-color: var(--button-base);
+}
+
+#copyhint {
+  padding: 2px;
+  color: var(--text-main);
+  background: var(--background);
+  border: 1px solid var(--border);
+}
+
+.img-thumbnail,
+.pdfPreview {
+  display: block;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.alert {
+  margin-bottom: 1em;
+  padding: 1em;
+  background-color: var(--background);
+  border-radius: 6px;
+
+  &.alert-danger {
+    color: var(--variable);
+    border: 1px solid var(--variable);
+  }
+
+  &.alert-info {
+    color: var(--focus);
+    border: 1px solid var(--focus);
+  }
+
+  &.alert-warning {
+    color: var(--highlight);
+    border: 1px solid var(--highlight);
+  }
+}
+
+ol, ul {
+  list-style-type: none;
+  padding-left: 0;
+
+  /* syntax highlighting */
+  &.linenums {
+    & li {
+      background-color: inherit;
+    }
+  }
+}
