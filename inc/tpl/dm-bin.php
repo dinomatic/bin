@@ -27,7 +27,7 @@ use PrivateBin\I18n;
 		<script type="text/javascript" data-cfasync="false" src="js/rawinflate-0.3.js" integrity="sha512-g8uelGgJW9A/Z1tB6Izxab++oj5kdD7B4qC7DHwZkB6DGMXKyzx7v5mvap2HXueI2IIn08YlRYM56jwWdm2ucQ==" crossorigin="anonymous"></script>
 		<script type="text/javascript" data-cfasync="false" src="js/bootstrap-3.4.1.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous"></script>
 	<?php if ($FILEUPLOAD) : ?>
-			<script type="text/javascript" data-cfasync="false" src="js/dm-bin.js" integrity="sha512-tWP6ndUDLL/dewDLQCN3Lg59fOKJe7hZ3WHzILxkRgLojqJoqRQhExth/KzuyVR8zoXIGpHRCr9cA5aZGkcUYw==" crossorigin="anonymous"></script>
+			<script type="text/javascript" data-cfasync="false" src="js/dm-bin.js" integrity="sha512-5vDWYOAnFV1g46KI4xDOAsAiR3xJ+/5TeZgUViExmaaPJ0+njizx8RxvgiHMFfxG1IuQHBIqN3/8qXmU9v3kjw==" crossorigin="anonymous"></script>
 	<?php endif; ?>
 	<?php if ($SYNTAXHIGHLIGHTING) : ?>
 		<script type="text/javascript" data-cfasync="false" src="js/prettify.js?<?php echo rawurlencode($VERSION); ?>" integrity="sha512-puO0Ogy++IoA2Pb9IjSxV1n4+kQkKXYAEUtVzfZpQepyDPyXk8hokiYDS7ybMogYlyyEIwMLpZqVhCkARQWLMg==" crossorigin="anonymous"></script>
@@ -174,6 +174,10 @@ use PrivateBin\I18n;
 
 				<div id="largefilenotice" role="alert" class="hidden alert alert-danger">
 					File size must be less than 1MB.
+				</div>
+
+				<div id="wrongfiletypenotice" role="alert" class="hidden alert alert-danger">
+					Please upload only image and PDF files.
 				</div>
 
 				<div id="remainingtime" role="alert" class="hidden alert alert-info"></div>
