@@ -7,7 +7,7 @@
  * @link      https://github.com/PrivateBin/PrivateBin
  * @copyright 2012 Sébastien SAUVAGE (sebsauvage.net)
  * @license   https://www.opensource.org/licenses/zlib-license.php The zlib/libpng License
- * @version   1.6.2
+ * @version   1.7.1
  */
 
 namespace PrivateBin;
@@ -28,7 +28,7 @@ class Controller
      *
      * @const string
      */
-    const VERSION = '1.6.2';
+    const VERSION = '1.7.1';
 
     /**
      * minimal required PHP version
@@ -111,10 +111,12 @@ class Controller
     public function __construct()
     {
         if (version_compare(PHP_VERSION, self::MIN_PHP_VERSION) < 0) {
-            throw new Exception(I18n::_('%s requires php %s or above to work. Sorry.', I18n::_('PrivateBin'), self::MIN_PHP_VERSION), 1);
+            error_log(I18n::_('%s requires php %s or above to work. Sorry.', I18n::_('PrivateBin'), self::MIN_PHP_VERSION));
+            return;
         }
         if (strlen(PATH) < 0 && substr(PATH, -1) !== DIRECTORY_SEPARATOR) {
-            throw new Exception(I18n::_('%s requires the PATH to end in a "%s". Please update the PATH in your index.php.', I18n::_('PrivateBin'), DIRECTORY_SEPARATOR), 5);
+            error_log(I18n::_('%s requires the PATH to end in a "%s". Please update the PATH in your index.php.', I18n::_('PrivateBin'), DIRECTORY_SEPARATOR));
+            return;
         }
 
         // load config from ini file, initialize required classes
@@ -250,7 +252,14 @@ class Controller
         }
         // The user posts a standard paste.
         else {
-            $this->_model->purge();
+            try {
+                $this->_model->purge();
+            } catch (Exception $e) {
+                error_log('Error purging pastes: ' . $e->getMessage() . PHP_EOL .
+                    'Use the administration scripts statistics to find ' .
+                    'damaged paste IDs and either delete them or restore them ' .
+                    'from backup.');
+            }
             $paste = $this->_model->getPaste();
             try {
                 $paste->setData($data);

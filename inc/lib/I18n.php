@@ -7,7 +7,7 @@
  * @link      https://github.com/PrivateBin/PrivateBin
  * @copyright 2012 Sébastien SAUVAGE (sebsauvage.net)
  * @license   https://www.opensource.org/licenses/zlib-license.php The zlib/libpng License
- * @version   1.6.2
+ * @version   1.7.1
  */
 
 namespace PrivateBin;
@@ -315,10 +315,10 @@ class I18n
      */
     protected static function _getPath($file = '')
     {
-        if (strlen(self::$_path) == 0) {
+        if (empty(self::$_path)) {
             self::$_path = PUBLIC_PATH . DIRECTORY_SEPARATOR . 'i18n';
         }
-        return self::$_path . (strlen($file) ? DIRECTORY_SEPARATOR . $file : '');
+        return self::$_path . (empty($file) ? '' : DIRECTORY_SEPARATOR . $file);
     }
 
     /**
@@ -356,6 +356,8 @@ class I18n
                 return $n % 10 === 1 && $n % 100 !== 11 ? 0 : (($n % 10 >= 2 && $n % 100 < 10 || $n % 100 >= 20) ? 1 : 2);
             case 'pl':
                 return $n === 1 ? 0 : ($n % 10 >= 2 && $n % 10 <= 4 && ($n % 100 < 10 || $n % 100 >= 20) ? 1 : 2);
+            case 'ro':
+                return $n === 1 ? 0 : (($n === 0 || ($n % 100 > 0 && $n % 100 < 20)) ? 1 : 2);
             case 'ru':
             case 'uk':
                 return $n % 10 === 1 && $n % 100 != 11 ? 0 : ($n % 10 >= 2 && $n % 10 <= 4 && ($n % 100 < 10 || $n % 100 >= 20) ? 1 : 2);
